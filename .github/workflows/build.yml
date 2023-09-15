@@ -16,6 +16,7 @@ jobs:
     - name: Copy Font
       run: |
         mkdir in/ && mkdir out/ && \
+        ls $GITHUB_WORKSPACE \
         cp $GITHUB_WORKSPACE/$FONT in/
           
 
