@@ -12,9 +12,10 @@ jobs:
 
     - name: Copy Font
       run: |
-        mkdir in/ && mkdir out/ && \
-        ls "${GITHUB_WORKSPACE}" \
-        cp "${GITHUB_WORKSPACE}/$FONT" in/
+        mkdir in/ \
+        && mkdir out/ \
+        && ls ${{ github.workspace }} \
+        && cp "$GITHUB_WORKSPACE/$FONT" in/
           
 
     - name: Run Patcher
@@ -28,4 +29,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: nerdfont
-        path: out
+        path: out/*
