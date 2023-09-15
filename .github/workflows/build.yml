@@ -12,7 +12,7 @@ jobs:
     - name: Copy Font
       run: |
         mkdir in/ && mkdir out/ && \
-        cp ${{ github.repository }}/AtkinsonMonolelgible.ttf in/
+        cp ${{ github.repository }}/AtkinsonMonolegible.ttf in/
           
 
     - name: Run Patcher
