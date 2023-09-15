@@ -11,7 +11,7 @@ jobs:
 
     - name: Copy Font
       run: |
-        mkdir in/ && mkdir out/ \
+        mkdir in/ && mkdir out/ && \
         cp ${{ github.repository }}/AtkinsonMonolelgible.ttf in/
           
 
