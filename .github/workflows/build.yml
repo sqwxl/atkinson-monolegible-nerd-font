@@ -14,8 +14,8 @@ jobs:
       run: |
         mkdir in/ \
         && mkdir out/ \
-        && ls ${{ github.workspace }} \
-        && cp "$GITHUB_WORKSPACE/$FONT" in/
+        && cp "$GITHUB_WORKSPACE/$FONT" in/ \
+        && ls in
           
 
     - name: Run Patcher
