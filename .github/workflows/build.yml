@@ -9,16 +9,22 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Copy Font
+      run: |
+        mkdir in/ && mkdir out/ \
+        cp ${{ github.repository }}/AtkinsonMonolelgible.ttf in/
+          
+
     - name: Run Patcher
       # https://hub.docker.com/r/nerdfonts/patcher
       run: |
         docker run --rm \
-          -v ${{ github.workspace }}/AtkinsonMonolegible.ttf:/in \
-          -v /AtkinsonMonolegibleNerdFont.ttf:/out \
+          -v /in:/in \
+          -v /out:/out \
           nerdfonts/patcher --careful --complete
 
     - name: Upload output as artifact
       uses: actions/upload-artifact@v3
       with:
         name: font
-        path: AtkinsonMonolegibleNerdFont.ttf
+        path: out
