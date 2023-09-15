@@ -9,9 +9,6 @@ jobs:
       FONT: AtkinsonMonolegible.ttf
     steps:
     - uses: actions/checkout@v4
-      with:
-        sparse-checkout: $FONT
-        sparse-checkout-cone-mode: false
 
     - name: Copy Font
       run: |
