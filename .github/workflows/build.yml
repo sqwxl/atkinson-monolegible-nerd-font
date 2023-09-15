@@ -19,7 +19,7 @@ jobs:
       with:
         image: nerdfonts/patcher # https://hub.docker.com/r/nerdfonts/patcher
         options: -v /in:/in -v /out:/out
-        run: ./nerd/bin/scripts/docker-entrypoint.sh --careful --complete  
+        run: /nerd/bin/scripts/docker-entrypoint.sh --careful --complete  
 
     - uses: actions/upload-artifact@v3
       with:
