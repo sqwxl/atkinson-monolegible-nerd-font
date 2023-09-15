@@ -5,14 +5,18 @@ name: Build
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FONT: AtkinsonMonolegible.ttf
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: $FONT
+        sparse-checkout-cone-mode: false
 
     - name: Copy Font
       run: |
         mkdir in/ && mkdir out/ && \
-        cp ${{ github.repository }}/AtkinsonMonolegible.ttf in/
+        cp $GITHUB_WORKSPACE/$FONT in/
           
 
     - name: Run Patcher
@@ -23,8 +27,7 @@ jobs:
           -v /out:/out \
           nerdfonts/patcher --careful --complete
 
-    - name: Upload output as artifact
-      uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v3
       with:
-        name: font
+        name: nerdfont
         path: out
