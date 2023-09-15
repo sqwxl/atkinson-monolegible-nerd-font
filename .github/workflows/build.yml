@@ -1,0 +1,24 @@
+on: [push, pull_request, workflow_dispatch]
+
+name: Build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Patcher
+      # https://hub.docker.com/r/nerdfonts/patcher
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}/AtkinsonMonolegible.ttf:/in \
+          -v /AtkinsonMonolegibleNerdFont.ttf:/out \
+          nerdfonts/patcher --careful --complete
+
+    - name: Upload output as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: font
+        path: AtkinsonMonolegibleNerdFont.ttf
