@@ -10,7 +10,7 @@ jobs:
     
     - run: |
         mkdir in out \
-        && cp ${{ github.worspace }}/AtkinsonMonolegible.ttf in/
+        && cp ${{ github.workspace }}/AtkinsonMonolegible.ttf in/
         
     - name: Run fontpatcher
       run: docker run -v in:/in -v out:/out nerdfonts/patcher --complete --careful
