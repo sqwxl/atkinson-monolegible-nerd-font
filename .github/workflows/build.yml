@@ -7,19 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
-    - name: Copy Font
-      run: |
-        mkdir in/ \
-        && mkdir out/ \
-        && cp "$GITHUB_WORKSPACE/AtkinsonMonolegible.ttf" in/ \
-
-    - name: Run Patcher
-      uses: addnab/docker-run-action@v3
-      with:
-        image: nerdfonts/patcher # https://hub.docker.com/r/nerdfonts/patcher
-        options: -v /in:/in -v /out:/out
-        run: /nerd/bin/scripts/docker-entrypoint.sh --careful --complete  
+    
+    - run: |
+        mkdir in out \
+        && cp ${{ github.worspace }}/AtkinsonMonolegible.ttf in/
+        
+    - name: Run fontpatcher
+      run: docker run -v in:/in -v out:/out nerdfonts/patcher --complete --careful
 
     - uses: actions/upload-artifact@v3
       with:
