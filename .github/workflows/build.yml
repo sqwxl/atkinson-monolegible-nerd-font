@@ -8,12 +8,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - run: |
-        mkdir in out \
-        && cp ${{ github.workspace }}/AtkinsonMonolegible.ttf in/
+    - run: mkdir out
         
     - name: Run fontpatcher
-      run: docker run -v in:/in -v out:/out nerdfonts/patcher --complete --careful
+      run: docker run -v .:/in:Z -v out:/out:Z nerdfonts/patcher --complete --careful
 
     - uses: actions/upload-artifact@v3
       with:
