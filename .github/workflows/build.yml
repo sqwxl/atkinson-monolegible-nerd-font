@@ -11,9 +11,9 @@ jobs:
     - run: mkdir out
         
     - name: Run fontpatcher
-      run: docker run -v .:/in:Z -v out:/out:Z nerdfonts/patcher --complete --careful
+      run: docker run -v $(pwd):/in:Z -v $(pwd)/out:/out:Z nerdfonts/patcher --complete --careful --no-progressbars
 
     - uses: actions/upload-artifact@v3
       with:
         name: nerdfont
-        path: out/*
+        path: out/*.ttf
