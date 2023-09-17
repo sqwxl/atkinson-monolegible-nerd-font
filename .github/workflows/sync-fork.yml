@@ -15,3 +15,5 @@ jobs:
         with:
           head: main
           base: main
+          auto_approve: true
+          token: ${{ secrets.PAT }}
