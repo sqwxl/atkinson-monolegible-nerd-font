@@ -13,7 +13,5 @@ jobs:
       # uses: tgymnich/fork-sync@0cc6ac48fd51415e7c34e5b8823021bc952a5f5f
       - uses: tgymnich/fork-sync@v1.2.1
         with:
-          owner: Hylian
-          repo: atkinson-monolegible
           head: main
           base: main
