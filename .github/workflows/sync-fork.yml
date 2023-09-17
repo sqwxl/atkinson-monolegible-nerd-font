@@ -1,0 +1,19 @@
+name: Fork Sync
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # every day at midnight
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      # You may pin to the exact commit or the version.
+      # uses: tgymnich/fork-sync@0cc6ac48fd51415e7c34e5b8823021bc952a5f5f
+      - uses: tgymnich/fork-sync@v1.2.1
+        with:
+          owner: Hylian
+          repo: atkinson-monolegible
+          head: main
+          base: main
