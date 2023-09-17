@@ -17,4 +17,4 @@ jobs:
       with:
         tag: latest
         commit: main
-        artifacts: AtkinsonMonolegibleNerdFont
+        artifacts: "*.ttf"
