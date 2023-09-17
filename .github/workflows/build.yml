@@ -12,12 +12,8 @@ jobs:
     
     - run: mkdir out
         
-    - name: Run fontpatcher
+    - name: Patch Font
       run: docker run -v $(pwd):/in:Z -v $(pwd)/out:/out:Z nerdfonts/patcher --complete --careful --no-progressbars
-
-    # - uses: actions/upload-artifact@v3
-    #   with:
-    #     path: out/*.ttf
         
     - name: Release
       uses: ncipollo/release-action@v1
@@ -26,5 +22,6 @@ jobs:
         name: AtkinsonMonolegibleNerdFont
         omitBody: true
         allowUpdates: true
+        removeArtifacts: true
         commit: main
         artifacts: out/*.ttf
