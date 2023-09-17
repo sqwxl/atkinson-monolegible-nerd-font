@@ -16,5 +16,8 @@ jobs:
     - uses: ncipollo/release-action@v1
       with:
         tag: latest
+        name: AtkinsonMonolegibleNerdFont
+        omitBody: true
+        allowUpdates: true
         commit: main
         artifacts: "*.ttf"
